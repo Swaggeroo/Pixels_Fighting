@@ -59,6 +59,12 @@ public class Canvas
         canvas.setPreferredSize(new Dimension(width, height));
         backgroundColor = bgColor;
         frame.pack();
+        frame.setLocationRelativeTo(null);
+        try {
+            frame.setIconImage(Toolkit.getDefaultToolkit().getImage(startGUI.class.getResource("/img.png")));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         setVisible(true);
         frame.addWindowListener(new WindowListener() {
             @Override

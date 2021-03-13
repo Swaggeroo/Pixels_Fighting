@@ -1,5 +1,7 @@
 import java.awt.*;
+import java.text.DecimalFormat;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 public class PixelsFighting extends Thread{
     int waitTime = 10;
@@ -11,6 +13,7 @@ public class PixelsFighting extends Thread{
     boolean[][] pixelArray;
     boolean multiThreading = false;
     int threads = 1;
+    DecimalFormat pattern = new DecimalFormat("#");
 
     public PixelsFighting() {
         prepare();
@@ -36,7 +39,7 @@ public class PixelsFighting extends Thread{
     }
 
     private void prepare(){
-        canvas = new Canvas("Pixels Fighting",pixels*zoom,pixels*zoom, Color.RED);
+        canvas = new Canvas("Pixels Fighting",pixels*zoom,pixels*zoom+13, Color.WHITE);
         canvas.setVisible(true);
         canvas.setForegroundColor(Color.GREEN);
         pixelArray = new boolean[pixels][pixels];
@@ -140,12 +143,12 @@ public class PixelsFighting extends Thread{
                 }
                 if (pixelArray[i][u]){
                     canvas.setForegroundColor(Color.GREEN);
-                    canvas.fillRectangle(i*zoom,u*zoom,zoom,zoom);
+                    canvas.fillRectangle(i*zoom,u*zoom+13,zoom,zoom);
                     zaehler++;
                     green = true;
                 }else {
                     canvas.setForegroundColor(Color.RED);
-                    canvas.fillRectangle(i*zoom,u*zoom,zoom,zoom);
+                    canvas.fillRectangle(i*zoom,u*zoom+13,zoom,zoom);
                 }
             }
         }
@@ -183,6 +186,10 @@ public class PixelsFighting extends Thread{
             System.out.println(round);
             if (!multiThreading){
                 fightCalc();
+                canvas.setForegroundColor(Color.WHITE);
+                canvas.fillRectangle(0,0,pixels*zoom,12);
+                canvas.setForegroundColor(Color.BLACK);
+                canvas.drawString("Evolution: "+ pattern.format(round)+" (No Multithreading)",0,10);
                 try {
                     Thread.sleep(waitTime);
                 } catch (Exception e) {
@@ -194,6 +201,15 @@ public class PixelsFighting extends Thread{
                 for (int i = 0; i<startedThreads.length;i++){
                     startedThreads[i] = new Thread1(haepchen*i,haepchen*(i+1)-1,true,canvas,pixelArray,pixels,zoom,i);
                     startedThreads[i].run();
+                }
+                canvas.setForegroundColor(Color.WHITE);
+                canvas.fillRectangle(0,0,pixels*zoom,12);
+                canvas.setForegroundColor(Color.BLACK);
+                canvas.drawString("Evolution: "+pattern.format(round)+" (Multithreading)",0,10);
+                try {
+                    Thread.sleep(waitTime);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
                 /*boolean threadsFinished = false;
                 while(!threadsFinished){

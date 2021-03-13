@@ -90,10 +90,10 @@ public class FightCalc {
                 }
                 if (pixelArray[i][u]){
                     canvas.setForegroundColor(Color.GREEN);
-                    canvas.fillRectangle(i*zoom,u*zoom,zoom,zoom);
+                    canvas.fillRectangle(i*zoom,u*zoom+13,zoom,zoom);
                 }else {
                     canvas.setForegroundColor(Color.RED);
-                    canvas.fillRectangle(i*zoom,u*zoom,zoom,zoom);
+                    canvas.fillRectangle(i*zoom,u*zoom+13,zoom,zoom);
                 }
             }
         }
