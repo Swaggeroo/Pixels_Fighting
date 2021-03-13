@@ -191,19 +191,10 @@ public class PixelsFighting extends Thread{
             }else {
                 Thread1[] startedThreads = new Thread1[threads];
                 int haepchen = pixels/threads;
-                Thread1 thread1 = new Thread1(haepchen*0,haepchen*(0+1)-1,true,canvas,pixelArray,pixels,zoom,0);
-                Thread1 thread2 = new Thread1(haepchen*1,haepchen*(1+1)-1,true,canvas,pixelArray,pixels,zoom,1);
-                Thread1 thread3 = new Thread1(haepchen*2,haepchen*(2+1)-1,true,canvas,pixelArray,pixels,zoom,2);
-                Thread1 thread4 = new Thread1(haepchen*3,haepchen*(3+1)-1,true,canvas,pixelArray,pixels,zoom,3);
-
-                thread1.run();
-                thread2.run();
-                thread3.run();
-                thread4.run();
-                /*for (int i = 0; i<startedThreads.length;i++){
+                for (int i = 0; i<startedThreads.length;i++){
                     startedThreads[i] = new Thread1(haepchen*i,haepchen*(i+1)-1,true,canvas,pixelArray,pixels,zoom,i);
                     startedThreads[i].run();
-                }*/
+                }
                 /*boolean threadsFinished = false;
                 while(!threadsFinished){
                     int threadsHasFinished = 0;
