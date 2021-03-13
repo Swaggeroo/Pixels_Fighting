@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Pixels Fighting:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Pixels_Fighting_jar</output-path>
+    <root id="archive" name="Pixels Fighting.jar">
+      <element id="module-output" name="Pixels Fighting" />
+    </root>
+  </artifact>
+</component>
